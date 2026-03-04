@@ -14,23 +14,21 @@ if (process.argv.length < 3) {
 const data = {};
 
 const filePathes = process.argv.slice(2);
-try {
-  filePathes.forEach((filePath) => {
-    data[filePath] = { raw: fs.readFileSync(filePath, "utf-8"), json: null };
-  });
-} catch (e) {
-  console.error("❌ Unable to read file:", e.message);
-  process.exit(1);
-}
 
-try {
-  filePathes.forEach((filePath) => {
-    data[filePath].json = JSON.parse(data[filePath].raw);
-  });
-} catch (e) {
-  console.error("❌ Invalid JSON:", e.message);
-  process.exit(1);
-}
+filePathes.forEach((filePath) => {
+  let raw, json;
+  try {
+    raw = fs.readFileSync(filePath, "utf-8");
+  } catch (e) {
+    console.error(`❌ Unable to read ${filePath}:`, e.message);
+  }
+  try {
+    json = JSON.parse(raw);
+  } catch (e) {
+    console.error(`❌ Invalid JSON ${filePath}:`, e.message);
+  }
+  data[filePath] = { raw: raw, json: json };
+});
 
 Object.entries(data).forEach(([filePath, elem]) => {
   const toto = DotsConfig.safeParse(elem.json);
