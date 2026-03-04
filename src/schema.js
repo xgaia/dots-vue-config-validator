@@ -1,7 +1,6 @@
 import { z } from "zod";
 
-const DotsConfig = z.strictObject({
-  collectionId: z.string(),
+const BaseDotsConfig = z.strictObject({
   mediaTypeEndpoint: z.string().optional(),
   homePageSettings: z
     .strictObject({
@@ -91,4 +90,10 @@ const DotsConfig = z.strictObject({
     .optional(),
 });
 
-export { DotsConfig };
+const DotsConfig = BaseDotsConfig.extend({
+  collectionId: z.string(),
+});
+
+const GenericConfig = z.object({ genericConf: BaseDotsConfig });
+
+export { DotsConfig, GenericConfig };
