@@ -3,17 +3,21 @@
 import fs from "node:fs";
 
 import { z } from "zod";
+import yargs from "yargs/yargs";
+import { hideBin } from "yargs/helpers";
 
-import { DotsConfig } from "./schema.js";
+import { DotsConfig, GenericConfig } from "./schema.js";
 
-if (process.argv.length < 3) {
-  console.error("Usage: yarn run validate <path-to-config>.json");
-  process.exit(1);
-}
+const argv = yargs(hideBin(process.argv))
+  .describe("generic-config")
+  .boolean("generic-config")
+  .command("[files..]")
+  .parse();
+
+const isGenericConfig = argv.genericConfig;
+const filePathes = argv["_"];
 
 const data = {};
-
-const filePathes = process.argv.slice(2);
 
 filePathes.forEach((filePath) => {
   let raw, json;
@@ -32,11 +36,17 @@ filePathes.forEach((filePath) => {
 
 let error = false;
 Object.entries(data).forEach(([filePath, elem]) => {
-  const toto = DotsConfig.safeParse(elem.json);
-  if (!toto.success) {
+  let parsedConfig;
+  if (isGenericConfig) {
+    parsedConfig = GenericConfig.safeParse(elem.json);
+  } else {
+    parsedConfig = DotsConfig.safeParse(elem.json);
+  }
+
+  if (!parsedConfig.success) {
     error = true;
     console.error(`❌ ${filePath}: Validation errors:\n`);
-    console.error(z.prettifyError(toto.error), "\n");
+    console.error(z.prettifyError(parsedConfig.error), "\n");
   } else {
     console.log(`✅ ${filePath}: Configuration is valid`);
   }
