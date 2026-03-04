@@ -30,12 +30,17 @@ filePathes.forEach((filePath) => {
   data[filePath] = { raw: raw, json: json };
 });
 
+let error = false;
 Object.entries(data).forEach(([filePath, elem]) => {
   const toto = DotsConfig.safeParse(elem.json);
   if (!toto.success) {
+    error = true;
     console.error(`❌ ${filePath}: Validation errors:\n`);
     console.error(z.prettifyError(toto.error), "\n");
   } else {
     console.log(`✅ ${filePath}: Configuration is valid`);
   }
 });
+if (error) {
+  process.exit(1);
+}
