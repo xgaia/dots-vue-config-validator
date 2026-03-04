@@ -4,7 +4,7 @@ import fs from "node:fs";
 
 import { z } from "zod";
 
-import { ConfigSchema } from "./schema.js";
+import { DotsConfig } from "./schema.js";
 
 if (process.argv.length < 3) {
   console.error("Usage: yarn run validate <path-to-config>.json");
@@ -29,7 +29,7 @@ try {
 }
 
 try {
-  ConfigSchema.parse(data);
+  DotsConfig.parse(data);
   console.log("✅ Configuration is valid");
   process.exit(0);
 } catch (e) {
