@@ -13,7 +13,7 @@
   "scripts": {
     "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "validate": "node src/validate.js",
-    "lint": "biome lint .",
+    "lint": "biome lint . --error-on-warnings",
     "format": "biome format ."
   },
   "dependencies": {
