@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "name": "dots-vue-config-validator",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "bin": {
+    "validate": "./src/validate.js"
+  },
+  "license": "AGPL-3.0",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "validate": "node src/validate.js",
+    "lint": "biome lint .",
+    "format": "biome format ."
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.5",
+    "eslint": "^10.0.2"
+  }
+}
