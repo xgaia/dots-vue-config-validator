@@ -6,7 +6,7 @@ A tiny Node.js utility that validates a JSON configuration file using **Zod**.
 - Simple command‑line script (`yarn run validate <config>.json`).
 - Schema defined with Zod – easy to extend.
 - Linting/formatting powered by **Biome** (plus ESLint for basic rules).
-- Licensed under the GNU AGPL‑v3.
+- Licensed under the MIT License.
 
 ## Prerequisites
 - **Node.js** (>=14 recommended)
@@ -37,4 +37,4 @@ Edit `src/validate.js` and modify the `ConfigSchema` constant to match the shape
 - **Format**: `yarn biome format`.
 
 ## License
-This project is licensed under the **GNU Affero General Public License v3.0** – see the `LICENSE` file for details.
+This project is licensed under the **MIT License** – see the `LICENSE` file for details.
