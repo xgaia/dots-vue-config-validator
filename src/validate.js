@@ -11,33 +11,33 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 
-const filePath = process.argv[2];
-let raw;
+const data = {};
+
+const filePathes = process.argv.slice(2);
 try {
-  raw = fs.readFileSync(filePath, "utf-8");
+  filePathes.forEach((filePath) => {
+    data[filePath] = { raw: fs.readFileSync(filePath, "utf-8"), json: null };
+  });
 } catch (e) {
   console.error("❌ Unable to read file:", e.message);
   process.exit(1);
 }
 
-let data;
 try {
-  data = JSON.parse(raw);
+  filePathes.forEach((filePath) => {
+    data[filePath].json = JSON.parse(data[filePath].raw);
+  });
 } catch (e) {
   console.error("❌ Invalid JSON:", e.message);
   process.exit(1);
 }
 
-try {
-  DotsConfig.parse(data);
-  console.log("✅ Configuration is valid");
-  process.exit(0);
-} catch (e) {
-  if (e instanceof z.ZodError) {
-    console.error("❌ Validation errors:\n");
-    console.error(z.prettifyError(e), "\n");
+Object.entries(data).forEach(([filePath, elem]) => {
+  const toto = DotsConfig.safeParse(elem.json);
+  if (!toto.success) {
+    console.error(`❌ ${filePath}: Validation errors:\n`);
+    console.error(z.prettifyError(toto.error), "\n");
   } else {
-    console.error("❌ Unexpected error:", e);
+    console.log(`✅ ${filePath}: Configuration is valid`);
   }
-  process.exit(1);
-}
+});
