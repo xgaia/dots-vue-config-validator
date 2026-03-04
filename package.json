@@ -11,6 +11,7 @@
     "src"
   ],
   "scripts": {
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "validate": "node src/validate.js",
     "lint": "biome lint .",
     "format": "biome format ."
