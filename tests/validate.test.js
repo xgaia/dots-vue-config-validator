@@ -1,14 +1,34 @@
-// tests/validate.test.js
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { DotsConfig } from "../src/index.js";
 
-describe("DotsConfig schema validation", () => {
-  test("valid config passes validation", () => {
-    const validConfig = { collectionId: "my-collection", footerSettings: {} };
-    expect(() => DotsConfig.parse(validConfig)).not.toThrow();
-  });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const dataDir = path.join(__dirname, "data");
 
-  test("missing required collectionId fails validation", () => {
-    const invalidConfig = {};
-    expect(() => DotsConfig.parse(invalidConfig)).toThrow();
-  });
+function loadJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+describe("DotsConfig validation – valid fixtures", () => {
+  const validDir = path.join(dataDir, "valid");
+  const files = fs.readdirSync(validDir);
+  for (const file of files) {
+    test(`valid file ${file} should pass`, () => {
+      const json = loadJson(path.join(validDir, file));
+      expect(() => DotsConfig.parse(json)).not.toThrow();
+    });
+  }
+});
+
+describe("DotsConfig validation – invalid fixtures", () => {
+  const invalidDir = path.join(dataDir, "invalid");
+  const files = fs.readdirSync(invalidDir);
+  for (const file of files) {
+    test(`invalid file ${file} should fail`, () => {
+      const json = loadJson(path.join(invalidDir, file));
+      expect(() => DotsConfig.parse(json)).toThrow();
+    });
+  }
 });

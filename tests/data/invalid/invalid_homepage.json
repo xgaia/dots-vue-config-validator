@@ -1,0 +1,10 @@
+{
+  "collectionId": "col-invalid-home",
+  "homePageSettings": {
+    "appNavBar": {
+      "appNavBarLogo": {
+        "href": "not-a-url"
+      }
+    }
+  }
+}

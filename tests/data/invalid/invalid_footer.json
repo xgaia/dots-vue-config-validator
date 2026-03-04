@@ -1,0 +1,6 @@
+{
+  "collectionId": "col-invalid-footer",
+  "footerSettings": {
+    "footerSubtitles": "not-an-array"
+  }
+}

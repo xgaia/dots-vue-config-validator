@@ -1,0 +1,11 @@
+{
+  "collectionId": "col-about",
+  "aboutPageSettings": [
+    {
+      "tabName": "Tab1",
+      "compName": "ComponentA"
+    },
+    null
+  ],
+  "footerSettings": {}
+}

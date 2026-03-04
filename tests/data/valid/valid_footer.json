@@ -1,0 +1,8 @@
+{
+  "collectionId": "col-footer",
+  "footerSettings": {
+    "footerTitle": "My Footer",
+    "footerSubtitles": ["Sub1", "Sub2"],
+    "footerDescription": "Some description here"
+  }
+}

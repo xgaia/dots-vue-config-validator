@@ -1,0 +1,5 @@
+{
+  "collectionId": "col-media",
+  "mediaTypeEndpoint": "https://example.com/api",
+  "footerSettings": {}
+}

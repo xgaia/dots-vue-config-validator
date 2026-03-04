@@ -1,0 +1,5 @@
+{
+  "collectionId": "col-exclude",
+  "excludeCollectionIds": ["id1", "id2", "id3"],
+  "footerSettings": {}
+}

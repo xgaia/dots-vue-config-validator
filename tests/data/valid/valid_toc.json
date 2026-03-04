@@ -1,0 +1,13 @@
+{
+  "collectionId": "col-toc",
+  "tableOfContentsSettings": {
+    "tableOfContentDepth": 3,
+    "editByLevel": 2,
+    "editByCiteType": ["type1", "type2"],
+    "countByCiteType": ["typeA"],
+    "displayTopToc": true,
+    "displayLeftToc": false,
+    "leftTocFragmentIsDocument": true
+  },
+  "footerSettings": {}
+}

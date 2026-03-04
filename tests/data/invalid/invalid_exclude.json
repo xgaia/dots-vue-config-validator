@@ -1,0 +1,4 @@
+{
+  "collectionId": "col-invalid-exclude",
+  "excludeCollectionIds": ["good", 42]
+}

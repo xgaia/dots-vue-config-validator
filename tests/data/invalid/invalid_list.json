@@ -1,0 +1,10 @@
+{
+  "collectionId": "col-invalid-list",
+  "homePageSettings": {
+    "listSection": {
+      "displayMode": "grid",
+      "cardCollectionPerPage": -5,
+      "displaySort": []
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "collectionId": "col-invalid-toc",
+  "tableOfContentsSettings": {
+    "tableOfContentDepth": -1,
+    "editByLevel": -3,
+    "displayTopToc": "yes"
+  }
+}

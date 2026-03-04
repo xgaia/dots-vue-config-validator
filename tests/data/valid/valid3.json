@@ -1,0 +1,10 @@
+{
+  "collectionId": "col-003",
+  "tableOfContentsSettings": {
+    "tableOfContentDepth": 2,
+    "editByLevel": 1,
+    "displayTopToc": true
+  },
+  "excludeCollectionIds": ["excl-1", "excl-2"],
+  "footerSettings": {}
+}

@@ -1,0 +1,35 @@
+{
+  "collectionId": "col-home",
+  "homePageSettings": {
+    "appNavBar": {
+      "collectionShortTitle": "Short",
+      "appNavBarLogo": {
+        "imgName": "logo.png",
+        "href": "https://example.com/"
+      },
+      "appNavBarApiLogo": {
+        "imgName": "api-logo.png",
+        "href": "https://api.example.com"
+      }
+    },
+    "pageHeader": {
+      "collectionAltTitle": "Alt Title",
+      "aboutButtonText": "About Us"
+    },
+    "descriptionSection": {
+      "collectionDescription": "A description",
+      "customCollectionDescription": {
+        "compName": "MyComponent"
+      }
+    },
+    "listSection": {
+      "displayMode": "list",
+      "logo": "logo.svg",
+      "browseButtonText": "Browse",
+      "cardCollectionPerPage": 10,
+      "displaySort": ["name", "date"],
+      "openState": true
+    }
+  },
+  "footerSettings": {}
+}
