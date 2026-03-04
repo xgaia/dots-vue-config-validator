@@ -15,7 +15,7 @@ const argv = yargs(hideBin(process.argv))
   .parse();
 
 const isGenericConfig = argv.genericConfig;
-const filePathes = argv["_"];
+const filePathes = argv._;
 
 const data = {};
 
