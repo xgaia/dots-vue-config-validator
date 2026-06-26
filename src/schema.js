@@ -4,6 +4,7 @@ const BaseDotsConfig = z.strictObject({
   mediaTypeEndpoint: z.string().optional(),
   homePageSettings: z
     .strictObject({
+      favicon: z.string().optional(),
       appNavBar: z
         .strictObject({
           collectionShortTitle: z.string().optional(),
@@ -25,6 +26,7 @@ const BaseDotsConfig = z.strictObject({
         .strictObject({
           collectionAltTitle: z.string().optional(),
           aboutButtonText: z.union([z.string().optional(), z.literal(null)]),
+          collectionBannerImg: z.string().optional(),
         })
         .optional(),
       descriptionSection: z
@@ -36,36 +38,46 @@ const BaseDotsConfig = z.strictObject({
                 compName: z.string().optional() /*XXX: use customFormat*/,
               })
               .optional(),
-            z.literal(null) /*XXX: null or empty string?*/,
+            z.literal(null),
+            z.literal(""),
           ]),
         })
         .optional(),
       listSection: z
         .strictObject({
-          displayMode: z
-            .enum(["list", "card", "" /*XXX: allow empty string?*/])
-            .optional(),
+          displayMode: z.enum(["list", "card", "", "mixed", "toc"]).optional(),
           logo: z.string(/*XXX: cutsomFormat*/).optional(),
           browseButtonText: z.string().optional(),
           cardCollectionPerPage: z.int().positive().optional(),
           displaySort: z.array(z.string()).min(1).optional(),
           openState: z.boolean().optional(),
+          columns: z
+            .array(
+              z.union([
+                z.strictObject({
+                  key: z.string(),
+                  label: z.string(),
+                  width: z.string().optional(),
+                  type: z.string().optional(),
+                }),
+                z.literal(null),
+              ]),
+            )
+            .optional(),
         })
         .optional(),
     })
     .optional(),
   footerSettings: z.strictObject({
     footerTitle: z.string().optional(),
-    footerSubtitles: z
-      .array(z.string()) /*XXX: max? min? empty list?*/
-      .optional() /*XXX: allow string? allow null?*/,
+    footerSubtitles: z.union([z.array(z.string()).optional(), z.literal(null)]),
     footerDescription: z.string().optional(),
   }),
   tableOfContentsSettings: z
     .strictObject({
       tableOfContentDepth: z.int().positive().optional(),
-      editByLevel: z.int().gte(0).optional(),
-      editByCiteType: z.array(z.string()).optional(),
+      editByLevel: z.int().gte(0).nullable().optional(),
+      editByCiteType: z.array(z.string()).nullable().optional(),
       countByCiteType: z.array(z.string()).optional(),
       displayTopToc: z.boolean().optional(),
       displayLeftToc: z.boolean().optional(),
@@ -74,20 +86,38 @@ const BaseDotsConfig = z.strictObject({
     .optional(),
   collectionCustomCss: z
     .union([z.literal(false), z.string(/*XXX: customFormat*/)])
-    .optional() /*XXX: optional?*/,
+    .optional(),
   excludeCollectionIds: z.array(z.string()).optional(),
   aboutPageSettings: z
     .array(
       z.union([
         z.strictObject({
           tabName: z.string(),
-          compName: z.string(/*XXX: custom*/),
+          compName: z.string(),
         }),
         z.literal(null),
       ]),
     )
-    .min(1) /*min1?*/
     .optional(),
+  customRoutes: z
+    .array(
+      z.strictObject({
+        name: z.string(),
+        path: z.string(),
+        compName: z.string(),
+      }),
+    )
+    .optional(),
+  topBreadcrumbButtonLabel: z.array(z.string()).optional(),
+  metadataDisplayOrder: z.array(z.string()).optional(),
+  metadataRename: z.object({}).passthrough().optional(),
+  excludeMetadata: z
+    .strictObject({
+      onlyDeclared: z.boolean().optional(),
+      fields: z.array(z.string()).optional(),
+    })
+    .optional(),
+  namespaces: z.object({}).passthrough().optional(),
 });
 
 const DotsConfig = BaseDotsConfig.extend({
