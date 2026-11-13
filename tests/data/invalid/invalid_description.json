@@ -2,7 +2,8 @@
   "collectionId": "col-invalid-desc",
   "homePageSettings": {
     "descriptionSection": {
-      "customCollectionDescription": {}
+      "customCollectionDescription": { "compName": 42 }
     }
-  }
+  },
+  "footerSettings": {}
 }

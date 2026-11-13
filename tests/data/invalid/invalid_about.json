@@ -1,4 +1,5 @@
 {
   "collectionId": "col-invalid-about",
-  "aboutPageSettings": []
+  "aboutPageSettings": [{ "tabName": "Tab" }],
+  "footerSettings": {}
 }
