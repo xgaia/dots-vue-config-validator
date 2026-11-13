@@ -1,0 +1,17 @@
+{
+  "collectionId": "col-valid-footer-logos",
+  "footerSettings": {
+    "footerTitle": "",
+    "footerSubtitles": null,
+    "footerDescription": null,
+    "footerLogos": {
+      "enc": {
+        "imgName": "logo_enc_white.svg",
+        "href": "https://www.chartes.psl.eu/",
+        "alt": "ENC"
+      },
+      "biblissima": null,
+      "other": { "imgName": "logo.svg", "maxWidth": "120px", "order": 1 }
+    }
+  }
+}

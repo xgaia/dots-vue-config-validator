@@ -1,0 +1,5 @@
+{
+  "collectionId": "col-invalid-renderer",
+  "renderer": { "facsimiles": [{ "selector": "a", "image": { "href": "x" } }] },
+  "footerSettings": { "footerTitle": "T" }
+}
