@@ -1,0 +1,5 @@
+{
+  "collectionId": "col-invalid-search-columns",
+  "searchConfig": { "columns": "columns" },
+  "footerSettings": { "footerTitle": "T" }
+}

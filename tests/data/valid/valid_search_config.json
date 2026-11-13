@@ -1,0 +1,17 @@
+{
+  "collectionId": "col-valid-search",
+  "searchConfig": {
+    "target": "fragment",
+    "include": { "citeTypes": ["partie", "acte"], "levels": [1, 2] },
+    "countLabel": { "singular": "résultat", "plural": "résultats" },
+    "defaultSort": "corpus_order",
+    "columns": [{ "key": "dublinCore.title", "label": "Titre", "sortKey": "corpus_order" }],
+    "facets": [
+      { "key": "resources", "label": "Documents" },
+      { "key": "dublinCore.type", "enabled": false },
+      { "key": "dublinCore.language", "label": "Langue", "enabled": true, "order": 2 }
+    ],
+    "temporalFacets": [{ "key": "dublinCore.date", "label": "Date", "enabled": true, "order": 1 }]
+  },
+  "footerSettings": { "footerTitle": "T" }
+}
