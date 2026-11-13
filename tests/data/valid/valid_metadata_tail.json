@@ -1,0 +1,13 @@
+{
+  "collectionId": "col-valid-metadata-tail",
+  "excludeMetadata": {
+    "onlyDeclared": false,
+    "fields": ["@id", "@type", "dts:*", "schema:*", "dots:*", "dcat:*"],
+    "alwaysExclude": ["dts:citationTrees"]
+  },
+  "metadataLogosMapping": [
+    { "name": "dots", "ext": null, "dynamic": "dots_api_base_url" },
+    { "name": "tei", "ext": "tei+xml" }
+  ],
+  "footerSettings": { "footerTitle": "T" }
+}
